@@ -2,14 +2,83 @@
 
 body {
   font-family: 'Noto Serif', serif;
-  margin: 0;
-  padding: 0;
+  color: #707b7c
 }
 
-h1 {
-  padding: 0
+.section {
+  text-align: center;
+  position: relative;
 }
 
-h3 {
-  padding: 0
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8%;
+}
+
+.container #photo {
+  width: 22%;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.container #information {
+  display: inline-block;
+
+}
+
+.container #contact-me {
+  display: inline-block;
+}
+
+.profile h2 {
+  margin-bottom: 5%
+}
+
+.profile p {
+  max-width: -webkit-calc(50em - (1.3em*2));
+  max-width: calc(50em - (1.3em*2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.3em;
+  padding-left: 1.3em;
+}
+
+.studies section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(39, 55, 70, 0.6);
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 10px;
+}
+
+.studies section h3{
+  display: inline-block;
+  opacity: 1;
+}
+
+.studies section ul {
+  display: inline-block;
+  text-align: left;
+  opacity: 1;
+}
+
+ul li{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color:  #85c1e9;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

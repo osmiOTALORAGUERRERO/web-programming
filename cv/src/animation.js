@@ -7,7 +7,7 @@ const myFullPage = new fullpage('#fullpage', {
   navigationPosition: 'right',
   //desplazamiento
   css3: true,
-  sectionsColor: [ '#1abc9c','#48c9b0', '#76d7c4'],
+  sectionsColor: [ '#000033','#000043', '#000053', '#000063'],
   scrollingSpeed: 1000,
   animateAnchor: 'true',
   recordHistory: false
