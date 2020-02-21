@@ -1,0 +1,23 @@
+
+.board {
+   display: inline-grid;
+   margin: 5px;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: repeat(4, 1fr);
+}
+
+.hole {
+   border: solid 1px #aaaaaa;
+   width: 120px;
+   height: 73px;
+}
+
+.chips {
+   display: inline-grid;
+   grid-template-columns: repeat(6, 1fr);
+   grid-template-rows: repeat(3, 1fr);
+   grid-column-gap: 10px;
+  grid-row-gap: 10px;
+   border: dotted 1px #aaaaaa;
+
+}
