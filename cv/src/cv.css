@@ -1,9 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
 
 body {
   font-family: 'Noto Serif', serif;
-  color: #EAECEE
+  color:  #aeb6bf;
 }
+
+.nav {
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 70;
+  width: 100%;
+  font-family: 'Patua One';
+}
+
+.nav ul {
+  float: right;
+  margin-right: 2%;
+  font-size: 1.1em;
+}
+
+.nav li,
+.nav a {
+  display: inline-block;
+  position: relative;
+  color:   #663300 ;
+}
+
 
 .section {
   text-align: center;
@@ -25,15 +49,11 @@ body {
 
 .container #information {
   display: inline-block;
-
+  font-size: 110%;
 }
 
 .container #contact-me {
   display: inline-block;
-}
-
-.profile h2 {
-  margin-bottom: 5%
 }
 
 .profile p {
@@ -43,13 +63,15 @@ body {
   margin-left: auto;
   padding-right: 1.3em;
   padding-left: 1.3em;
+  font-size: 110%;
+  color: #a6acaf;
 }
 
 .studies section{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(39, 55, 70, 0.6);
+  background-color: rgb(39, 55, 70, 0.5);
   margin-left: 20%;
   margin-right: 20%;
   border-radius: 10px;
@@ -66,13 +88,45 @@ body {
   opacity: 1;
 }
 
+.section #habilidades {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#habilidades div {
+  display: inline-block;
+  text-align: left;
+  margin: 2%;
+  padding: 2%;
+  background-color: rgb(39, 55, 70, 0.4);
+  width: 20%;
+  border-radius: 10px;
+}
+
+#habilidades ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 250%;
+}
+
+h2 {
+  font-size: 220%;
+}
+
 ul li{
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 a {
   text-decoration: none;
-  color:  #85c1e9;
+  color:  #80cbc4 ;
 }
 
 a:visited {

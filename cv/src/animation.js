@@ -1,13 +1,13 @@
 const myFullPage = new fullpage('#fullpage', {
   //navegación
   menu: '#menu',
-  anchors: ['main','aboutMe','studies','skills'],
-  navigartionToolTips: ['main', 'aboutMe', 'studies', 'skills'],
   navigation: true,
+  anchors: ['main','aboutMe','studies','skills'],
+  navigationTooltips: ['Información Principal', 'Perfil', 'Estudios', 'Habilidades'],
   navigationPosition: 'right',
   //desplazamiento
   css3: true,
-  sectionsColor: [ '#000033','#000043', '#000053', '#000063'],
+  sectionsColor: [ ' #1976d2','#217fdd', '#2584e3', '#2a8ae9'],
   scrollingSpeed: 1000,
   animateAnchor: 'true',
   recordHistory: false
