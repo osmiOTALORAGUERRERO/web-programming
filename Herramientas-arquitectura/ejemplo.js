@@ -41,7 +41,6 @@ const selectGroups = () => {
       while ( trResult.length > 0) {
         for (var tr of trResult) {
           responseField.removeChild(tr)
-          count++
         }
       }
 
