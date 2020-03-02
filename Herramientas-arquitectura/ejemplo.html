@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .section {
+        text-align: center;
+        margin: 10px;
+      }
+      table {
+        width: 100%;
+        border: 1px solid #000;
+      }
+      th, td {
+        width: 25%;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid #000;
+        border-collapse: collapse;
+        padding: 0.3em;
+        caption-side: bottom;
+      }
+      caption {
+        padding: 0.3em;
+        color: #fff;
+        background: #000;
+      }
+      th {
+        background: #eee;
+      }
+    </style>
+    <title>ejemplos.js</title>
+  </head>
+  <body>
+    <div class="section">
+        <h1>Ejemplo de HTML, CSS, JS + AJAX-> DHTML</h1>
+        <h3>Seleccione un municipio</h3>
+        <select id='municipio' class="" name="" onchange="selectGroups()">
+          <option value="" selected disabled>Seleccione uno</option>
+        </select>
+    </div>
+    <div id='response' class="section">
+      <table>
+        <caption>GRUPOS DE INVESTIGACIÓN RECONOCIDOS Y CLASIFICADOS 2017</caption>
+        <tr>
+          <th>Identificador del grupo</th>
+          <th>Año convocatoria</th>
+          <th>Nombre del grupo</th>
+          <th>Area de conocimiento</th>
+        </tr>
+      </table>
+    </div>
+    <footer> Api tomada de <a href="#">https://www.datos.gov.co/Ciencia-Tecnolog-a-e-Innovaci-n/GRUPOS-DE-INVESTIGACI-N-RECONOCIDOS-Y-CLASIFICADOS/hrtu-9f5g</a> </footer>
+    <script src="ejemplo.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      window.onload = () => {
+        const url = 'https://www.datos.gov.co/resource/hrtu-9f5g.json?$select=NME_MUNICIPIO_GR&$group=NME_MUNICIPIO_GR'
+
+        const selectMunicipio = document.getElementById('municipio')
+
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === XMLHttpRequest.DONE){
+            const optionsResponse = xhr.response.map(municipio => {
+              return `<option value="${municipio.NME_MUNICIPIO_GR}">${municipio.NME_MUNICIPIO_GR}</option>`;
+            })
+            selectMunicipio.innerHTML += optionsResponse;
+            console.log(optionsResponse)
+          }
+        }
+        xhr.open('GET', url);
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
