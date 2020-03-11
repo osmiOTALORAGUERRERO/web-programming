@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ventanas</title>
+  </head>
+
+  <body>
+    <form id="Color" name="cambiacolor" action="" method="">
+      <b>Selecciona un color</b>
+      <select class="" name="color">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+      </select>
+      <input type="button" name="" value="Modifica color" onclick="document.bgColor = document.cambiacolor.color.value">
+    </form>
+    <form id="marco" name="cambiamarco">
+      <b>Seleccione un marco</b>
+      <select class="" name="marco">
+        <option value="0">Izquierda</option>
+        <option value="1">Derecha</option>
+      </select>
+    </form>
+    <script type="text/javascript">
+      const SO = navigator.platform;
+      document.write(`<h1> Documento abierto con: ${SO} </h1>`)
+    </script>
+    <script type="text/javascript">
+      const texto = prompt(`Titulo para la nueva ventana: `);
+      const ventanaNueva = window.open('', 'Nueva ventana');
+      ventanaNueva.document.write(`<h1> ${texto} </h1>`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ventanas window</title>
+    <script type="text/javascript">
+      const ventanaSecundaria = window.open('', 'Segunda ventana', 'height=500, width=500')
+    </script>
+  </head>
+  <body>
+    <h1 style="text-align:center">Ejemplo de aparencia de una ventana</h1>
+    <input type="button" name="" value="Abre una ventana" onclick="nuevaVentana(1)">
+    <input type="button" name="" value="Abrir multiples ventanas" onclick="nuevaVentana(3)">
+    <input type="button" name="" value="Aparencia en ventanas" onclick="aparencia()">
+    <p>comunicación entre ventanas</p>
+    <form name="manipularVentana">
+      <input type="text" name="url" value="http://www.">
+      <input type="button" name="" value="Mostrar url en ventana ventana secundaria" onclick="ventanaSecundaria.location=document.manipularVentana.url.value">
+    </form>
+
+    <script type="text/javascript">
+      const nuevaVentana = (numWindows) => {
+        for (var i = 0; i < numWindows; i++) {
+          let myWindow1 = window.open('', 'Nueva ventana'+i, 'height=200, width=300')
+          myWindow1.document.write('<html lang="en" dir="ltr">')
+          myWindow1.document.write('<head>')
+          myWindow1.document.write('<title>Ventana de prueba</title>')
+          myWindow1.document.write('</head>')
+          myWindow1.document.write('<body>')
+          myWindow1.document.writeln('Ventana'+i)
+          myWindow1.document.writeln('Se han usado las propiedades:')
+          myWindow1.document.write('<li>height=200</li> <li>width=300</li>')
+          myWindow1.document.write('<input type="button" name="" value="Cerrar" onclick="window.close()">')
+          myWindow1.document.write('</body>')
+          myWindow1.document.write('</html>')
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      const aparencia = () => {
+        let myWindow1 = window.open('', 'Nueva ventana', 'height=200, width=300, top=0, left=0')
+        myWindow1.document.write('<html lang="en" dir="ltr">')
+        myWindow1.document.write('<head>')
+        myWindow1.document.write('<title>Ventana de prueba</title>')
+        myWindow1.document.write('</head>')
+        myWindow1.document.write('<body>')
+        myWindow1.document.writeln('Ventana')
+        myWindow1.document.writeln('Se han usado las propiedades:')
+        myWindow1.document.write('<li>height=200</li> <li>width=300</li> <li>top=0</li> <li>left=0</li>')
+        myWindow1.document.write('<input type="button" name="" value="Cerrar" onclick="window.close()">')
+        myWindow1.document.write('</body>')
+        myWindow1.document.write('</html>')
+      }
+    </script>
+  </body>
+</html>

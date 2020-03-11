@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicios propuestos</title>
+  </head>
+  <body>
+    <h1>Ejercicios propuestos</h1>
+    <div id="milisegundos" class="">
+      <h2>Tiempo en milisegundo</h2>
+
+    </div>
+    <div id="longitud" class="">
+      <h2>longitud de cadena</h2>
+      <input type="text" name="cadena" value="" placeholder="Escribe algo">
+      <p id="answer"><b>Longitud: </b> </p>
+    </div>
+    <div id="diagonal" class="">
+      <h2>Diagonal Pantalla</h2>
+      <p>Cambia de tamaño la pantalla</p>
+    </div>
+    <div id="cambio" class="">
+      <h2>Cambio</h2>
+      <input type="button" name="" value="Camabiar documento" onclick="changeDocument()">
+    </div>
+
+    <script type="text/javascript">
+      const fieldMilliseconds = document.getElementById('milisegundos')
+      content = []
+      const past = new Date('January 1, 2000 00:00:00')
+      const now = new Date()
+      const elapsed = now.getTime() - past.getTime()
+
+      fieldMilliseconds.innerHTML += `<ul>
+        <li>Fecha 1: ${past}</li>
+        <li>Ahora: ${now}</li>
+        <li>lapso milisegundos: ${elapsed}</li>
+       </ul>`
+    </script>
+    <script type="text/javascript">
+      const fieldLength = document.getElementById('longitud')
+      const textInput = fieldLength.getElementsByTagName('input')[0]
+      const fieldAnswer = document.getElementById('answer')
+      textInput.onchange = (e) => {
+        fieldAnswer.innerHTML = '<b>Longitud: </b>'
+        fieldAnswer.innerHTML += e.target.value.length
+      }
+    </script>
+    <script type="text/javascript">
+      const fieldDiagonal = document.getElementById('diagonal')
+      const widthWindow = window.innerWidth;
+      const heightWindow = window.innerHeight;
+      const diagonal = Math.sqrt(Math.pow(widthWindow,2)+Math.pow(heightWindow,2))
+      fieldDiagonal.innerHTML = `<h2>Diagonal Pantalla</h2> <p>Cambia de tamaño la pantalla</p> <li>Alto: ${heightWindow}</li> <li>Ancho: ${widthWindow}</li> <li>Diagonal: ${diagonal}</li>`
+      window.onresize = () => {
+        const widthWindow = window.innerWidth;
+        const heightWindow = window.innerHeight;
+        const diagonal = Math.sqrt(Math.pow(widthWindow,2)+Math.pow(heightWindow,2))
+        fieldDiagonal.innerHTML = `<h2>Diagonal Pantalla</h2> <li>Alto: ${heightWindow}</li> <li>Ancho: ${widthWindow}</li> <li>Diagonal: ${diagonal}</li>`
+      }
+    </script>
+    <script type="text/javascript">
+      const changeDocument = () => {
+        document.bgColor = "grey"
+        document.fgColor = "white"
+        document.title = "Modificaciones del objeto document"
+      }
+    </script>
+  </body>
+</html>

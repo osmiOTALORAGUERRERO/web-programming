@@ -1,0 +1,27 @@
+<html lang="en" dir="ltr">
+  <body>
+    <form>
+      <input type="button" value="Cambiar Color" onclick="cambiaColor()">
+    </form>
+    <a href="ventana1.html" target="_blank">Ventana 1</a>
+    <script type="text/javascript">
+      const cambiaColor = () => {
+        campoColor = parent.Marco1.document.cambiacolor.color
+        if(campoColor.selectedIndex==0){
+          colorin = 'green';
+        }else{
+          colorin = blue;
+        }
+        campoFrame = parent.Marco1.document.cambiamarco.marco
+        if(campoFrame.selectedIndex==0){
+          window.parent.Marco1.document.bgColor = colorin;
+        }else{
+          window.parent.Marco2.document.bgColor = colorin;
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      let nuevaVentana = window.open('https://github.com/osmiOTALORAGUERRERO', 'Github', 'height=500, width=500')
+    </script>
+  </body>
+</html>
