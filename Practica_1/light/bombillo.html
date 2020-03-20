@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>bombillo JS</title>
+    <style media="screen">
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Switch de bombillo</h1>
+    <h2>Cambia el estado de la bombilla usando el boton</h2>
+    <button type="button" name="switch" onclick="light()">switch</button>
+    <img src="ligth0.png" alt="bombilla_apagada" id="light">
+    <script type="text/javascript">
+      let turn = false;
+      let light_bulb = document.getElementById('light');
+      let light = () => {
+        turn = !turn;
+        light_bulb.src = turn ? "ligth1.png" : "ligth0.png";
+      }
+    </script>
+  </body>
+</html>
