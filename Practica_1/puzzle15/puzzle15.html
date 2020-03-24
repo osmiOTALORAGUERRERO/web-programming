@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Puzzle 15</title>
+    <link rel="stylesheet" href="puzzle15.css">
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">
+        <div class="title">
+          Mega Puzzle
+        </div>
+        <div class="game-information">
+          <div id="time" class="time">
+            Time : 0 s
+          </div>
+          <div class="move">
+            # moves : 0
+          </div>
+        </div>
+        <div class="upload">
+          <select class="dimensions" name="">
+            <option value="1" selected>3X3</option>
+            <option value="2">4X4</option>
+            <option value="3">5X5</option>
+          </select>
+          <input type="file" name="imgPuzzle" accept="image/jpeg, image/png">
+        </div>
+      </div>
+      <div class="game">
+        <div id="play" class="play">
+          <img src="img/jugar.svg" width="25%" alt=""> Play
+        </div>
+        <div id="puzzle" class="puzzle">
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="">
+          <b>How to play: </b><img src="img/hacer-clic.svg" width="20px" alt="click"> Click in the box to move
+        </div>
+        <button type="button" name="button">Jugar de nuevo</button>
+      </div>
+    </div>
+    <script src="puzzle15.js" charset="utf-8"></script>
+  </body>
+</html>
