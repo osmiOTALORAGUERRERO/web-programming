@@ -2,7 +2,14 @@ const fieldApp = document.getElementById('app')
 
 let currentExercise = 'isDigitIncreasing'
 
-const generateInputs = (inputs) => {
+
+/**
+ * generateInputs - description
+ *
+ * @param  {type} inputs description
+ * @return {type}        description
+ */
+function generateInputs(inputs) {
   let elementsInputs = []
   inputs.forEach((input, i) => {
     for (var i = 0; i < input.quantity; i++) {
@@ -59,7 +66,15 @@ const generateInputs = (inputs) => {
   return elementsInputs
 }
 
-const generateButton = (options, eventOnClick) => {
+
+/**
+ * generateButton - description
+ *
+ * @param  {type} options      description
+ * @param  {type} eventOnClick description
+ * @return {type}              description
+ */
+function generateButton(options, eventOnClick) {
   let newButton = document.createElement('button')
   newButton.type = 'button'
   newButton.innerText = options.text
@@ -67,7 +82,13 @@ const generateButton = (options, eventOnClick) => {
   return newButton
 }
 
-const cleanApp = () => {
+
+/**
+ * cleanApp - description
+ *
+ * @return {type}  description
+ */
+function cleanApp() {
   fieldApp.getElementsByTagName('h1')[0].remove()
   fieldApp.getElementsByTagName('p')[0].remove()
   let input = document.getElementById('get-input')
@@ -82,7 +103,17 @@ const cleanApp = () => {
   }
 }
 
-const showApp = (title, statement, inputs, button) => {
+
+/**
+ * showApp - description
+ *
+ * @param  {type} title     description
+ * @param  {type} statement description
+ * @param  {type} inputs    description
+ * @param  {type} button    description
+ * @return {type}           description
+ */
+function showApp (title, statement, inputs, button) {
   cleanApp()
   let inputsField = document.getElementById('get-input')
   let h1Title = document.createElement('h1')
@@ -100,7 +131,13 @@ const showApp = (title, statement, inputs, button) => {
   inputsField.appendChild(button)
 }
 
-const evaluateExercise = () => {
+
+/**
+ * evaluateExercise - description
+ *
+ * @return {type}  description
+ */
+function evaluateExercise() {
   let inputs = document.getElementsByTagName('input')
   let output = document.getElementById('output')
   let numInputs = inputs.length
@@ -166,7 +203,14 @@ const evaluateExercise = () => {
   console.log(result)
 }
 
-const choosePoint = (e) => {
+
+/**
+ * choosePoint - description
+ *
+ * @param  {type} e description
+ * @return {type}   description
+ */
+function choosePoint(e) {
   currentExercise = e.value
   let currentOptions = optionsExercises[currentExercise]
   console.log(currentOptions);

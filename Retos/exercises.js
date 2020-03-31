@@ -1,5 +1,15 @@
+/**
+ * Algorithms with exercise
+ */
 const algorithms = {
-  isDigitIncreasing : (n) => {
+
+  /**
+   * isDigitIncreasing - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  isDigitIncreasing(n) {
     let increments = []
     n = parseInt(n)
     if ((n.toString()).length === 1) {
@@ -23,7 +33,13 @@ const algorithms = {
     return {increasing : false}
   },
 
-  isTwinPaired : (a) => {
+  /**
+   * isTwinPaired - description
+   *
+   * @param  {type} a description
+   * @return {type}   description
+   */
+  isTwinPaired(a) {
     let even = a.filter(number => parseInt(number) % 2 === 0)
     let odd = a.filter(number => parseInt(number) % 2 !== 0)
     const isAscending = (number, index, array) => {
@@ -38,7 +54,13 @@ const algorithms = {
 
   },
 
-  isOlympic : (a) => {
+  /**
+   * isOlympic - description
+   *
+   * @param  {type} a description
+   * @return {type}   description
+   */
+  isOlympic(a) {
     if (a.some(number => parseInt(number) < 0)) {
       return false;
     }
@@ -63,7 +85,14 @@ const algorithms = {
 
   isMultiplo : (a,b) => (a%b === 0),
 
-  isLeapYear : n => {
+
+  /**
+   * isLeapYear - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  isLeapYear(n) {
     if(parseInt(n) % 4 == 0 && parseInt(n) % 100 != 0){
       return true
     } else if (parseInt(n) % 400 == 0 && parseInt(n) % 100 == 0) {
@@ -201,7 +230,13 @@ const algorithms = {
     }
   },
 
-  numberSeries : (n) => {
+  /**
+   * numberSeries - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  numberSeries(n) {
     let serie = []
     for (var i = 1; i <= n; i++) {
       serie.push(i)
@@ -211,6 +246,12 @@ const algorithms = {
     return {serie, sum, average}
   },
 
+  /**
+   * factorial - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
   factorial(n) {
     	if (n == 0){
     		return 1;
@@ -218,7 +259,14 @@ const algorithms = {
     	return n * this.factorial(n-1);
   },
 
-  taylorSerie : (n, x) => {
+  /**
+   * taylorSerie - description
+   *
+   * @param  {type} n description
+   * @param  {type} x description
+   * @return {type}   description
+   */
+  taylorSerie(n, x) {
     let result = 0
     for (let i = 0; i < n; i++) {
       result += Math.pow(x, i)/algorithms.factorial(i)
@@ -226,7 +274,14 @@ const algorithms = {
     return result;
   },
 
-  taylorSerieModified : (n,x) => {
+  /**
+   * taylorSerieModified - description
+   *
+   * @param  {type} n description
+   * @param  {type} x description
+   * @return {type}   description
+   */
+  taylorSerieModified(n,x) {
     let result = 0
     for (let i = 0; i < n; i++) {
       result += (Math.pow(x, i)/algorithms.factorial(i))*Math.pow(-1, i)
@@ -234,14 +289,31 @@ const algorithms = {
     return result;
   },
 
-  quadraticEcuation : (a,b,c) => {
+  /**
+   * quadraticEcuation - description
+   *
+   * @param  {type} a description
+   * @param  {type} b description
+   * @param  {type} c description
+   * @return {type}   description
+   */
+  quadraticEcuation(a,b,c) {
     root = Math.sqrt(Math.pow(b,2)-(4*a*c))
     x1 = (-b + root)/(2*a)
     x2 = (-b - root)/(2*a)
     return {x1, x2}
   },
 
-  fibonacciSerie : (n, a=[0,1], sum=1) => {
+  /**
+   * fibonacciSerie - description
+   *
+   * @param  {type} n     description
+   * @param  {type} a=[0  description
+   * @param  {type} 1]    description
+   * @param  {type} sum=1 description
+   * @return {type}       description
+   */
+  fibonacciSerie(n, a=[0,1], sum=1) {
     if(a.length === n+1) {
       return {a,sum}
     } else if (n === 0 || n === 1) {
@@ -249,11 +321,20 @@ const algorithms = {
     } else {
       next = a[a.length-2]+a[a.length-1]
       a.push(next)
-      return algorithms.fibonacciSerie(n, a, sum+next)
+      return this.fibonacciSerie(n, a, sum+next)
     }
   },
 
-  fibonacciSerieModified: (n, a=[0,1,2], sum=3) => {
+
+  /**
+   * fibonacciSerieModified - description
+   *
+   * @param  {type} n     description
+   * @param  {type} a
+   * @param  {type} sum=3 description
+   * @return {type}       description
+   */
+  fibonacciSerieModified(n, a=[0,1,2], sum=3) {
     if (a.length === n) {
       return {a, sum}
     }else if (n === 0 || n === 1) {
@@ -263,11 +344,17 @@ const algorithms = {
     }else {
       next =  a[a.length-3]+a[a.length-2]+a[a.length-1]
       a.push(next)
-      return algorithms.fibonacciSerieModified(n, a, sum+next)
+      return this.fibonacciSerieModified(n, a, sum+next)
     }
   },
 
-  isPrime: (n) => {
+  /**
+   * isPrime - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  isPrime(n) {
     for (var i = 2; i < n; i++) {
         if(n % i === 0){
           return false;
@@ -276,7 +363,13 @@ const algorithms = {
     return true;
   },
 
-  primeSerie: (n) => {
+  /**
+   * primeSerie - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  primeSerie(n) {
     n = parseInt(n)
     let serie = []
     let sum = 0
@@ -293,7 +386,13 @@ const algorithms = {
     return {serie, sum, average}
   },
 
-  euler: (p) => {
+  /**
+   * euler - description
+   *
+   * @param  {type} p description
+   * @return {type}   description
+   */
+  euler(p) {
     p = parseInt(p)
     let result = 0;
     for (var i = 0; i < p; i++) {
@@ -302,7 +401,13 @@ const algorithms = {
     return result;
   },
 
-  PI: (p) => {
+  /**
+   * PI - description
+   *
+   * @param  {type} p description
+   * @return {type}   description
+   */
+  PI(p) {
     let result = 0
     let odd = 1
     for (var i = 0; i < p; i++) {
@@ -312,7 +417,13 @@ const algorithms = {
     return result*4
   },
 
-  evenOddArray: (size) => {
+  /**
+   * evenOddArray - description
+   *
+   * @param  {type} size description
+   * @return {type}      description
+   */
+  evenOddArray(size) {
     const even = n => n+7
     const odd = n => n-1
     let arr = []
@@ -322,7 +433,13 @@ const algorithms = {
     return arr
   },
 
-  operationsArray: (size) => {
+  /**
+   * operationsArray - description
+   *
+   * @param  {type} size description
+   * @return {type}      description
+   */
+  operationsArray(size) {
     let arr = []
     let sum = 0
     let average = 0
@@ -335,7 +452,13 @@ const algorithms = {
     return {arr, sum, average};
   },
 
-  specialArraySort: (size) => {
+  /**
+   * specialArraySort - description
+   *
+   * @param  {type} size description
+   * @return {type}      description
+   */
+  specialArraySort(size) {
     let arr = []
     let sum = 0
     let average = 0
@@ -350,7 +473,13 @@ const algorithms = {
     return {arr, arrSort}
   },
 
-  isPalindrome: (phrase) => {
+  /**
+   * isPalindrome - description
+   *
+   * @param  {type} phrase description
+   * @return {type}        description
+   */
+  isPalindrome(phrase) {
     let p = phrase.normalize('NFD').replace(/[\u0300-\u036f/,/./ /\?/\¿/\!/\¡]/g,'')
     p = p.toLowerCase()
     let left = Math.ceil(p.length/2)
@@ -363,7 +492,13 @@ const algorithms = {
     return leftPhrase === rightPhrase
   },
 
-  beamResistance: (beam) => {
+  /**
+   * beamResistance - description
+   *
+   * @param  {type} beam description
+   * @return {type}      description
+   */
+  beamResistance(beam) {
     let base = {'%':10, '&':30, '#':90}
     let weightSupported = base[beam.charAt(0)]
     let weightTotal = 0
@@ -390,7 +525,13 @@ const algorithms = {
     return {error:true, reason:'La viga esta mal construida'}
   },
 
-  madisonBridge: (bridge) => {
+  /**
+   * madisonBridge - description
+   *
+   * @param  {type} bridge description
+   * @return {type}        description
+   */
+  madisonBridge(bridge) {
     if(bridge.charAt(0)==='*' && bridge.charAt(bridge.length-1)==='*'){
       bridge = bridge.substring(1,bridge.length-1)
       if (bridge === '') {
@@ -414,7 +555,13 @@ const algorithms = {
     return {error:true, reason:'INVALIDO'};
   },
 
-  operationMatrix: (n) => {
+  /**
+   * operationMatrix - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  operationMatrix(n) {
     let matrix = []
     let max = n
     let sum = 0
@@ -433,7 +580,13 @@ const algorithms = {
     return {matrix, sum, max, min}
   },
 
-  lowerTriangular: (n) => {
+  /**
+   * lowerTriangular - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  lowerTriangular(n) {
     let matrix = []
     let triangular = []
     let xi = 0
@@ -452,109 +605,136 @@ const algorithms = {
     return {matrix, triangular}
   },
 
-    rhombus: (n) => {
-      let draw = {space:'&nbsp;', numeral:'#', break:'<br>'}
-      let left = n%2 === 0 ? (n/2)-1 : parseInt(n/2)
-      let right = n%2 === 0 ? n/2 : parseInt(n/2)
-      let coordinates = {xl:left, xr:right}
-      let rhomb = '<br>'
-      for (var i = 0; i < n; i++) {
-        for (var j = 0; j < n; j++) {
-          if(j===coordinates.xl || j===coordinates.xr){
-            rhomb += draw.numeral
-          }else {
-            rhomb += draw.space
-          }
+  /**
+   * rhombus - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  rhombus(n) {
+    let draw = {space:'&nbsp;', numeral:'#', break:'<br>'}
+    let left = n%2 === 0 ? (n/2)-1 : parseInt(n/2)
+    let right = n%2 === 0 ? n/2 : parseInt(n/2)
+    let coordinates = {xl:left, xr:right}
+    let rhomb = '<br>'
+    for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+        if(j===coordinates.xl || j===coordinates.xr){
+          rhomb += draw.numeral
+        }else {
+          rhomb += draw.space
         }
-        rhomb += draw.break
-        if (n%2 === 0) {
-          if (i !== left) {
-            coordinates.xl += i < left ? -1 : 1
-            coordinates.xr += i < left ? 1 : -1
-          }
-        }
-        else{
+      }
+      rhomb += draw.break
+      if (n%2 === 0) {
+        if (i !== left) {
           coordinates.xl += i < left ? -1 : 1
           coordinates.xr += i < left ? 1 : -1
         }
       }
-      return rhomb;
-    },
-
-    matrixMultiplication: (m, n, p) => {
-      let A = []
-      let B = []
-      let C = []
-      for (var i = 0; i < m; i++) {
-        let row = []
-        for (var j = 0; j < n; j++) {
-          row.push((i+1)*j)
-        }
-        A.push(row)
-      }
-      for (var i = 0; i < n; i++) {
-        let row = []
-        for (var j = 0; j < p; j++) {
-          row.push((j+1)*i)
-        }
-        B.push(row)
-      }
-      for (var i = 0; i < m; i++) {
-        let row = []
-        for (var j = 0; j < p; j++) {
-          value = 0
-          A[i].forEach((itemA, x) => {
-            value += B[x][j]*itemA
-          });
-          row.push(value)
-        }
-        C.push(row)
-      }
-      return {A,B,C}
-    },
-
-    hourglass: (n) => {
-      if (n%2 !== 0){
-        let left = 0
-        let right = n-1
-        let matrix = []
-        let watch = []
-        for (var i = 0; i < n; i++) {
-          let row = []
-          let row2 = []
-          let count = i*2
-          for (var j = 0; j < n; j++) {
-            if(j >= left && j <= right){
-              row2.push(count)
-            }else {
-              row2.push(-1)
-            }
-            row.push(count++)
-          }
-          left += i > (n/2)-1 ? -1 : 1
-          right += i > (n/2)-1 ? 1 : -1
-          watch.push(row2)
-          matrix.push(row)
-        }
-        return {matrix, watch};
-      }else{
-        return "Solo Numero impares";
-      }
-    },
-
-    factorDecomposition: (number, a = []) => {
-      if (number === 1) {
-        a = a.toString()
-        return a.replace(/,/g,' x ');
-      }else{
-        let count = 2
-        let numberMultiplo
-        do {
-          numberMultiplo = algorithms.isMultiplo(number, count)
-          numberMultiplo ? count : count++
-        } while (!numberMultiplo);
-        a.push(count)
-        return algorithms.factorDecomposition(number/count, a);
+      else{
+        coordinates.xl += i < left ? -1 : 1
+        coordinates.xr += i < left ? 1 : -1
       }
     }
+    return rhomb;
+  },
+
+  /**
+   * matrixMultiplication - description
+   *
+   * @param  {type} m description
+   * @param  {type} n description
+   * @param  {type} p description
+   * @return {type}   description
+   */
+  matrixMultiplication(m, n, p) {
+    let A = []
+    let B = []
+    let C = []
+    for (var i = 0; i < m; i++) {
+      let row = []
+      for (var j = 0; j < n; j++) {
+        row.push((i+1)*j)
+      }
+      A.push(row)
+    }
+    for (var i = 0; i < n; i++) {
+      let row = []
+      for (var j = 0; j < p; j++) {
+        row.push((j+1)*i)
+      }
+      B.push(row)
+    }
+    for (var i = 0; i < m; i++) {
+      let row = []
+      for (var j = 0; j < p; j++) {
+        value = 0
+        A[i].forEach((itemA, x) => {
+          value += B[x][j]*itemA
+        });
+        row.push(value)
+      }
+      C.push(row)
+    }
+    return {A,B,C}
+  },
+
+  /**
+   * hourglass - description
+   *
+   * @param  {type} n description
+   * @return {type}   description
+   */
+  hourglass(n) {
+    if (n%2 !== 0){
+      let left = 0
+      let right = n-1
+      let matrix = []
+      let watch = []
+      for (var i = 0; i < n; i++) {
+        let row = []
+        let row2 = []
+        let count = i*2
+        for (var j = 0; j < n; j++) {
+          if(j >= left && j <= right){
+            row2.push(count)
+          }else {
+            row2.push(-1)
+          }
+          row.push(count++)
+        }
+        left += i > (n/2)-1 ? -1 : 1
+        right += i > (n/2)-1 ? 1 : -1
+        watch.push(row2)
+        matrix.push(row)
+      }
+      return {matrix, watch};
+    }else{
+      return "Solo Numero impares";
+    }
+  },
+
+  /**
+   * factorDecomposition - description  
+   *
+   * @param  {type} number description
+   * @param  {type} a = [] description
+   * @return {type}        description
+   */
+  factorDecomposition(number, a = []) {
+    if (number === 1) {
+      a = a.toString()
+      return a.replace(/,/g,' x ');
+    }else{
+      let count = 2
+      let numberMultiplo
+      do {
+        numberMultiplo = algorithms.isMultiplo(number, count)
+        numberMultiplo ? count : count++
+      } while (!numberMultiplo);
+      a.push(count)
+      return algorithms.factorDecomposition(number/count, a);
+    }
+  }
 }

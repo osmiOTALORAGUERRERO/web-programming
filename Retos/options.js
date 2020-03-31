@@ -1,3 +1,6 @@
+/**
+ * Object with options for view in HTML
+ */
 const optionsExercises = {
   isDigitIncreasing : {
     title: "Digit Increasing",
