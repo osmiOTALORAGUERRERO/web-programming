@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicios para practicar</title>
+    <style media="screen">
+      body {
+        background-color: #9df1c0;
+      }
+      .app h1 {
+        text-align: center;
+      }
+      .footer {
+        text-align: center;
+        align-self: center;
+        align-content: flex-end;
+        background-position: bottom;
+      }
+      #output h3 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Ejercicios de Programación</h1>
+    </div>
+
+    <div class="query">
+      <select class="" name="choose" onchange="choosePoint(this)" autofocus>
+        <option value="isDigitIncreasing" selected>Is Digit Increasing</option>
+        <option value="isTwinPaired">Is Twin Paired</option>
+        <option value="isOlympic">Is Olympic</option>
+        <option value="isEven">Is Even</option>
+        <option value="biggerNumber">Bigger Number</option>
+        <option value="orderNumbers">Order Numbers</option>
+        <option value="isMultiplo">Is Multiplo</option>
+        <option value="isLeapYear">Is Leap-Year</option>
+        <option value="nomina">Nomina</option>
+        <option value="offers">offers</option>
+        <option value="enrollment">Enrollment</option>
+        <option value="shipment">Shipment</option>
+        <option value="numberSeries">Number Series</option>
+        <option value="factorial">Factorial</option>
+        <option value="taylorSerie">Taylor Serie</option>
+        <option value="taylorSerieModified">Taylor Serie Modified</option>
+        <option value="quadraticEcuation">Quadratic Ecuation</option>
+        <option value="fibonacciSerie">Fibonacci Serie</option>
+        <option value="fibonacciSerieModified">Fibonacci Serie Modified</option>
+        <option value="isPrime">Is Prime</option>
+        <option value="primeSerie">Prime Serie</option>
+        <option value="euler">Euler</option>
+        <option value="PI">PI</option>
+        <option value="evenOddArray">Even Odd Array</option>
+        <option value="operationsArray">Operations Array</option>
+        <option value="specialArraySort">Special Array Sort</option>
+        <option value="isPalindrome">Is Palindrome</option>
+        <option value="beamResistance">Beam Resistance</option>
+        <option value="madisonBridge">Madison Bridge</option>
+        <option value="operationMatrix">Operation Matrix</option>
+        <option value="lowerTriangular">Lower Triangular</option>
+        <option value="rhombus">Rhombus</option>
+        <option value="matrixMultiplication">Matrix Multiplication</option>
+        <option value="hourglass">Hourglass</option>
+        <option value="factorDecomposition">Factor Decomposition</option>
+      </select>
+    </div>
+    <hr>
+    <div id="app" class="app">
+      <h1>Digit Increasing</h1>
+      <p>A number is called digit-increasing if it is equal to n + nn + nnn + ... for some digit n between 1 and 9. For example 24 is digit-increasing because it equals 2 + 22 (here n = 2)</p>
+      <div id="get-input" class="">
+        <label for="">A number n: </label>
+        <input type="number" name="" value="" placeholder="A number n">
+        <br> <br>
+        <button type="button" name="button" onclick="evaluateExercise()">Is increasing</button>
+      </div>
+      <div id="output">
+
+      </div>
+    </div>
+
+    <div class="footer">
+      Sugerencia: Tambien puedes ver los resultados desde la consola del navegador
+    </div>
+    <script src="taller22.js" charset="utf-8"></script>
+    <script src="exercises.js" charset="utf-8"></script>
+    <script src="options.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      let choose = document.getElementsByTagName('select')[0]
+      choose.selectedIndex = 0;
+    </script>
+  </body>
+</html>
