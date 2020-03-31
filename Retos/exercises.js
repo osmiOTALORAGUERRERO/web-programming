@@ -298,9 +298,9 @@ const algorithms = {
    * @return {type}   description
    */
   quadraticEcuation(a,b,c) {
-    root = Math.sqrt(Math.pow(b,2)-(4*a*c))
-    x1 = (-b + root)/(2*a)
-    x2 = (-b - root)/(2*a)
+    let root = Math.sqrt(Math.pow(b,2)-(4*a*c))
+    let x1 = (-b + root)/(2*a)
+    let x2 = (-b - root)/(2*a)
     return {x1, x2}
   },
 
@@ -716,7 +716,7 @@ const algorithms = {
   },
 
   /**
-   * factorDecomposition - description  
+   * factorDecomposition - description
    *
    * @param  {type} number description
    * @param  {type} a = [] description
