@@ -20,12 +20,14 @@ function movePiece(e) {
     }
     let moveTo = puzzle.move(i,j)
     if (moveTo.enabled) {
+      let moveDiv = document.getElementById('move')
       let divMoved = cardsDisplayed[i][j].firstChild
       let divEmpty = cardsDisplayed[moveTo.i][moveTo.j].firstChild
       cardsDisplayed[i][j].firstChild.remove()
       cardsDisplayed[moveTo.i][moveTo.j].firstChild.remove()
       cardsDisplayed[i][j].appendChild(divEmpty)
       cardsDisplayed[moveTo.i][moveTo.j].appendChild(divMoved)
+      moveDiv.innerText = `# moves : ${puzzle.movements}`
       console.log(cardsDisplayed)
     }
     if(puzzle.won()){

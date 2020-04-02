@@ -111,12 +111,10 @@ const puzzle = {
         if (this.inGame[0][1] === -1) { //right
           this.inGame[0][1] = this.inGame[i][j]
           this.inGame[i][j] = -1
-          this._movements++
           moveTo = {enabled:true, 'i':0, 'j':1}
         }else if (this.inGame[1][0] === -1) { //down
           this.inGame[1][0] = this.inGame[i][j]
           this.inGame[i][j] = -1
-          this._movements++
           moveTo = {enabled:true, 'i':1, 'j':0}
         }
       }else if (j>0 && j<this.sizePuzzle-1) {
@@ -229,6 +227,9 @@ const puzzle = {
           moveTo = {enabled:true, 'i':i-1, 'j':j}
         }
       }
+    }
+    if (moveTo.enabled) {
+      this._movements++
     }
     return moveTo;
   },
