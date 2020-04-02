@@ -29,7 +29,16 @@ function movePiece(e) {
       console.log(cardsDisplayed)
     }
     if(puzzle.won()){
-      alert('win')
+      cardsDisplayed.forEach((row, i) => {
+        row.forEach((item, i) => {
+          item.firstChild.onclick = null
+        });
+      });
+      swal({
+        title: "Congratulations!",
+        text: "You are won",
+        icon: "success",
+      });
     }
   }
 }
