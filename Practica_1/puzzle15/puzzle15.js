@@ -2,15 +2,33 @@ let playField = document.getElementById('play');
 let puzzleField = document.getElementById('puzzle');
 let imageFile;
 let imgSlice = [];
-let puzzle = {};
-let time = 0;
-let move = 0;
-let sizePuzzle;
+let cardsDisplayed = [];
 let start = false;
 
 
-const movePiece = () => {
-
+function movePiece(e) {
+  if(e.target.localName !== 'div'){
+    console.log(e.target.parentNode, cardsDisplayed);
+    let parentPiece = e.target.parentNode
+    let i = 0;
+    let j;
+    for (i; i < cardsDisplayed.length; i++) {
+      j = cardsDisplayed[i].findIndex( element => element.firstChild === parentPiece )
+      if (j !== -1) {
+        break;
+      }
+    }
+    let moveTo = puzzle.move(i,j)
+    if (moveTo.enabled) {
+      let divMoved = cardsDisplayed[i][j].firstChild
+      let divEmpty = cardsDisplayed[moveTo.i][moveTo.j].firstChild
+      cardsDisplayed[i][j].firstChild.remove()
+      cardsDisplayed[moveTo.i][moveTo.j].firstChild.remove()
+      cardsDisplayed[i][j].appendChild(divEmpty)
+      cardsDisplayed[moveTo.i][moveTo.j].appendChild(divMoved)
+      console.log(cardsDisplayed)
+    }
+  }
 }
 
 const uploadImage = (input) => {
@@ -21,68 +39,73 @@ const setMatrix = (elementDimension) => {
   if (!start) {
     switch (parseInt(elementDimension.value)) {
       case 1:
-        sizePuzzle = 3;
-        generatePuzzle(3)
+        puzzle.sizePuzzle = 3;
+        puzzle.seed = 3;
+        puzzle.inGame = 3;
         matrixDisplay(3)
         break;
       case 2:
-        sizePuzzle = 4;
-        generatePuzzle(4)
+        puzzle.sizePuzzle = 4;
+        puzzle.seed = 4;
+        puzzle.inGame = 4;
         matrixDisplay(4)
         break;
       case 3:
-        sizePuzzle = 5;
-        generatePuzzle(5)
+        puzzle.sizePuzzle = 5;
+        puzzle.seed = 5;
+        puzzle.inGame = 5;
         matrixDisplay(5)
         break;
     }
   }
 }
 
-const generatePuzzle = (size) => {
-  puzzle.seed = []
-  let row
-  let count = 0
-  for (var i = 0; i < size; i++) {
-    row = []
-    for (var j = 0; j < size; j++) {
-      ++count
-      row.push(count==(size*size) ? -1:count)
-    }
-    puzzle.seed.push(row)
-  }
-  console.log(puzzle.seed)
-}
-
 const matrixDisplay = (size) => {
   let divRow;
   let divCol;
-  puzzleField.innerHTMLl = '';
+  let row;
+  puzzleField.innerHTML = '';
   for (var i = 0; i < size; i++) {
     divRow = document.createElement('div')
     divRow.id = `row-${i}`;
     divRow.className = 'row-box';
+    row = []
     for (var j = 0; j < size; j++) {
       divCol = document.createElement('div')
       divCol.id = `col-${j}`;
-      divCol.className = 'col_box';
+      divCol.className = 'col-box';
+      row.push(divCol)
       divRow.appendChild(divCol);
     }
     puzzleField.appendChild(divRow)
-  }
-}
-
-const startTime = () => {
-  if (!start) {
-    let timeField = document.getElementById('time')
-    setInterval(function(){
-      timeField.innerText = `Time : ${time++} s`
-    },1000)
+    cardsDisplayed.push(row)
   }
 }
 
 const puzzleDisplay = () => {
-
+  let imgSliceDiv;
+  let xpuzzle = 0
+  let ypuzzle = 0
+  cardsDisplayed.forEach((row, i) => {
+    ypuzzle = 0
+    row.forEach((col, j) => {
+      imgSliceDiv = document.createElement('div')
+      imgSliceDiv.className = 'img-box'
+      imgSliceDiv.onclick = movePiece
+      let indicator = puzzle.inGame[xpuzzle][ypuzzle++]
+      console.log(indicator)
+      imgSliceDiv.id = indicator
+      if (indicator !== -1) {
+        let imgSliceCanva = imgSlice[indicator-1]
+        console.log(imgSliceCanva)
+        imgSliceDiv.appendChild(imgSliceCanva)
+        col.appendChild(imgSliceDiv)
+      } else {
+        col.appendChild(imgSliceDiv)
+      }
+    });
+    xpuzzle++
+  });
 }
 
 const generateCutImages = (imgFile) => {
@@ -93,11 +116,11 @@ const generateCutImages = (imgFile) => {
   img.src = URL.createObjectURL(imageFile)
   img.onload = () => {
     let slice = {
-      xi : img.width/sizePuzzle,
-      yi : img.height/sizePuzzle
+      xi : img.width/puzzle.sizePuzzle,
+      yi : img.height/puzzle.sizePuzzle
     }
-    for (var i = 0; i < sizePuzzle; i++) {
-      for (var j = 0; j < sizePuzzle; j++) {
+    for (var i = 0; i < puzzle.sizePuzzle; i++) {
+      for (var j = 0; j < puzzle.sizePuzzle; j++) {
         canvas = document.createElement('canvas')
         canvas.width = slice.xi
         canvas.height = slice.yi
@@ -107,22 +130,37 @@ const generateCutImages = (imgFile) => {
         console.log(chunks)
       }
     }
+    puzzleDisplay()
   }
   chunks.pop()
   return chunks;
 }
 
 function startGame(e) {
-  playField.hidden = true;
   uploadField = document.getElementsByClassName('upload')[0]
   setMatrix(uploadField.children[0])
   uploadImage(uploadField.children[1])
-  if (imageFile && sizePuzzle) {
+  if (imageFile && puzzle.sizePuzzle) {
+    playField.hidden = true;
+    puzzleField.hidden = false;
     imgSlice = generateCutImages(imageFile)
-    puzzleDisplay()
-    startTime()
+    puzzle.startTime((time)=>{
+      let timeField = document.getElementById('time')
+      timeField.innerText = `Time : ${time} s`
+    },start)
+    start = true;
+  } else {
+    swal({
+      title : "No ha subido ninguna imagen",
+      icon : "warning",
+      button : "Close",
+      timer : 3000
+    })
   }
-  start = true;
+}
+
+window.onload = () => {
+  puzzleField.hidden = true;
 }
 
 playField.addEventListener('click', startGame, false);

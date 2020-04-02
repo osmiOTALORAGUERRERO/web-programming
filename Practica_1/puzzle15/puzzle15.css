@@ -20,3 +20,47 @@ body {
   height: calc(100% - 1px);
   background-size: calc(100% - 1px);
 }
+
+.puzzle {
+  border: 2px solid;
+  border-radius: 10px;
+  background-color: grey;
+  padding: 0.2em;
+
+}
+
+.row-box {
+  display: block;
+}
+
+.col-box {
+  display: inline-block;
+  padding: 2px;
+}
+
+.img-box {
+  width: 150px;
+  height: 150px;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+#
+
+canvas {
+  width: inherit;
+  height: inherit;
+  border-radius: 10px;
+}
+
+button {
+
+}
+
+input[type ="file"] {
+
+}
+
+select {
+
+}
