@@ -1,11 +1,11 @@
 const puzzle = {
   _seed: [],
   _inGame: [],
-  _numbersPuzzle: [],
   _sizePuzzle: 0,
   _count: 0,
   _movements: 0,
   _time: 0,
+  _intervalTime:null,
   get time(){
     return this._time;
   },
@@ -24,21 +24,22 @@ const puzzle = {
     let row
     for (var i = 0; i < size; i++) {
       row = []
+      row2 = []
       for (var j = 0; j < size; j++) {
         ++this._count
         let numberAdd = this._count==(size*size) ? -1:this._count
         row.push(numberAdd)
-        this._numbersPuzzle.push(numberAdd)
+        row2.push(numberAdd)
       }
       this._seed.push(row)
+      this._inGame.push(row2)
     }
   },
   get seed(){
     return this._seed;
   },
   set inGame(size){
-    this._inGame = [...this.seed]
-    console.log(this._inGame)
+    console.log(this._inGame, this.seed)
     let reorder = Math.floor(Math.random() * (Math.pow(size,3)- 0)) + 0
     let availableMovements = {left:size-1, right:0, up:size-1, down:0}
     let index = {i:size-1, j:size-1}
@@ -91,22 +92,13 @@ const puzzle = {
         direction > 4 ? direction=1 : direction++;
       }
     }
-    // let row
-    // for (var i = 0; i < size; i++) {
-    //   row = []
-    //   for (var j = 0; j < size; j++) {
-    //     let numberAdd = Math.floor(Math.random() * (this._numbersPuzzle.length - 0)) + 0;
-    //     row.push(this._numbersPuzzle.splice(numberAdd,1)[0])
-    //   }
-    //   this._inGame.push(row)
-    // }
   },
   get inGame(){
     return this._inGame;
   },
   startTime(callback, start){
     if (!start) {
-      setInterval(()=>{
+      this._intervalTime = setInterval(()=>{
         this._time++
         callback(this._time)
       },1000)
@@ -243,8 +235,9 @@ const puzzle = {
   won(){
     inGameStr = this.inGame.toString()
     seedStr = this.seed.toString()
+    console.log(this.inGame, this.seed)
     if(inGameStr === seedStr){
-      clearInterval()
+      clearInterval(this._intervalTime)
       return true
     }
     return false
@@ -257,6 +250,6 @@ const puzzle = {
     this._count = 0
     this._movements = 0
     this._time = 0
-    clearInterval()
+    clearInterval(this._intervalTime)
   }
 }

@@ -28,6 +28,9 @@ function movePiece(e) {
       cardsDisplayed[moveTo.i][moveTo.j].appendChild(divMoved)
       console.log(cardsDisplayed)
     }
+    if(puzzle.won()){
+      alert('win')
+    }
   }
 }
 
