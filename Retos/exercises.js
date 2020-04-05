@@ -5,9 +5,11 @@ const algorithms = {
 
   /**
    * isDigitIncreasing - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * A number is called digit-increasing if it is equal to n + nn + nnn + ...
+   * for some digit n between 1 and 9.
+   * For example 24 is digit-increasing because it equals 2 + 22 (here n = 2)
+   * @param  {number} n number to evaluate if it is increasing
+   * @return {boolean}   true if it is increasing, false if it is false
    */
   isDigitIncreasing(n) {
     let increments = []
@@ -35,9 +37,10 @@ const algorithms = {
 
   /**
    * isTwinPaired - description
-   *
-   * @param  {type} a description
-   * @return {type}   description
+   * An array is defined to be twin paired if its even-valued elements
+   * (if any) are in scending order and its odd-valued elements (if any) are in ascending order
+   * @param  {array:number} a array with values
+   * @return {boolean}   true if it is Twin Paired, else return false
    */
   isTwinPaired(a) {
     let even = a.filter(number => parseInt(number) % 2 === 0)
@@ -56,9 +59,11 @@ const algorithms = {
 
   /**
    * isOlympic - description
-   *
-   * @param  {type} a description
-   * @return {type}   description
+   * An Olympic array is defined to be an array in which every value is greater than
+   * or equal to the sum of the values less than it.
+   * The sum of the values less than the minimum value in the array is defined to be 0
+   * @param  {array:number} a The array with numbers to evaluate
+   * @return {boolean}  true if it is Olympic, else return false
    */
   isOlympic(a) {
     if (a.some(number => parseInt(number) < 0)) {
@@ -88,9 +93,9 @@ const algorithms = {
 
   /**
    * isLeapYear - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   *  determine if the year is leap or not
+   * @param  {number} n year number
+   * @return {boolean}   true if the year is leap
    */
   isLeapYear(n) {
     if(parseInt(n) % 4 == 0 && parseInt(n) % 100 != 0){
@@ -232,9 +237,9 @@ const algorithms = {
 
   /**
    * numberSeries - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * Print the first n numbers, and print their sum and average
+   * @param  {number} n number of numbers
+   * @return {object}   object with array serie, sum and average
    */
   numberSeries(n) {
     let serie = []
@@ -248,9 +253,9 @@ const algorithms = {
 
   /**
    * factorial - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * The factorial of a number  5 = 1 x 2 x 3 x 4 x 5 = 120.
+   * @param  {number} n number of factorial
+   * @return {number}   result of factorial
    */
   factorial(n) {
     	if (n == 0){
@@ -261,10 +266,10 @@ const algorithms = {
 
   /**
    * taylorSerie - description
-   *
-   * @param  {type} n description
-   * @param  {type} x description
-   * @return {type}   description
+   * taylorSerie
+   * @param  {number} n number of precicion
+   * @param  {number} x number of serie
+   * @return {number}   number float with the result
    */
   taylorSerie(n, x) {
     let result = 0
@@ -276,10 +281,10 @@ const algorithms = {
 
   /**
    * taylorSerieModified - description
-   *
-   * @param  {type} n description
-   * @param  {type} x description
-   * @return {type}   description
+   * a second version of taylor Serie
+   * @param  {number} n precicion number
+   * @param  {number} x number to evaluate
+   * @return {number}   number float with the result
    */
   taylorSerieModified(n,x) {
     let result = 0
@@ -291,11 +296,11 @@ const algorithms = {
 
   /**
    * quadraticEcuation - description
-   *
-   * @param  {type} a description
-   * @param  {type} b description
-   * @param  {type} c description
-   * @return {type}   description
+   * (-b+-sqrt(b^2-4ac))/2a
+   * @param  {number} a term a
+   * @param  {number} b term b
+   * @param  {number} c term c
+   * @return {object} result x1, x2
    */
   quadraticEcuation(a,b,c) {
     let root = Math.sqrt(Math.pow(b,2)-(4*a*c))
@@ -306,12 +311,11 @@ const algorithms = {
 
   /**
    * fibonacciSerie - description
-   *
-   * @param  {type} n     description
-   * @param  {type} a=[0  description
-   * @param  {type} 1]    description
-   * @param  {type} sum=1 description
-   * @return {type}       description
+   * 0, 1, 1, 2, 3, 5, 8, 13, 21,...
+   * @param  {number} n     numbers of the serie
+   * @param  {array} a=[0,1]  array of the serie
+   * @param  {number} sum=1 sum
+   * @return {object}   serie and sum
    */
   fibonacciSerie(n, a=[0,1], sum=1) {
     if(a.length === n+1) {
@@ -328,11 +332,11 @@ const algorithms = {
 
   /**
    * fibonacciSerieModified - description
-   *
-   * @param  {type} n     description
-   * @param  {type} a
-   * @param  {type} sum=3 description
-   * @return {type}       description
+   * 0, 1, 2, 3, 6, 11, 20, 37, 68, ...
+   * @param  {number} n     numbers of the serie
+   * @param  {array} a=[0,1,2] array of the serie
+   * @param  {number} sum=3 sum
+   * @return {object}       serie and sum
    */
   fibonacciSerieModified(n, a=[0,1,2], sum=3) {
     if (a.length === n) {
@@ -350,9 +354,9 @@ const algorithms = {
 
   /**
    * isPrime - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * validate if a number is a prime
+   * @param  {number} n number to evaluate
+   * @return {boolean} true is the number is prime
    */
   isPrime(n) {
     for (var i = 2; i < n; i++) {
@@ -365,9 +369,9 @@ const algorithms = {
 
   /**
    * primeSerie - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * prime serie until n
+   * @param  {number} n description
+   * @return {object}   serie, sum and average
    */
   primeSerie(n) {
     n = parseInt(n)
@@ -388,9 +392,9 @@ const algorithms = {
 
   /**
    * euler - description
-   *
-   * @param  {type} p description
-   * @return {type}   description
+   * euler number
+   * @param  {number} p precicion number
+   * @return {number}   float number result
    */
   euler(p) {
     p = parseInt(p)
@@ -403,9 +407,9 @@ const algorithms = {
 
   /**
    * PI - description
-   *
-   * @param  {type} p description
-   * @return {type}   description
+   * Number PI
+   * @param  {number} p Number of precicion
+   * @return {number}   PI
    */
   PI(p) {
     let result = 0
@@ -419,9 +423,10 @@ const algorithms = {
 
   /**
    * evenOddArray - description
-   *
-   * @param  {type} size description
-   * @return {type}      description
+   * If the position is even, the vector cell must be filled with the following formula Cell [i] = i + 7.
+   * If the cell is odd, the vector cell must be filled with the following formula Cell [i] = i - 1
+   * @param  {number} size size of array
+   * @return {array}      array even Odd
    */
   evenOddArray(size) {
     const even = n => n+7
@@ -435,9 +440,9 @@ const algorithms = {
 
   /**
    * operationsArray - description
-   *
-   * @param  {type} size description
-   * @return {type}      description
+   * The vector must be filled with the following formula Cell [i] = (i + 1) * i
+   * @param  {type} size size array
+   * @return {type}      sum and average of vector
    */
   operationsArray(size) {
     let arr = []
@@ -454,9 +459,11 @@ const algorithms = {
 
   /**
    * specialArraySort - description
-   *
    * @param  {type} size description
-   * @return {type}      description
+   * If the position is even, the vector cell must be filled with the following formula Cell [i] = i * i + 1.
+   * If the cell is odd, the vector cell must be filled with the following formula Cell [i] = 3 * (i + 1).
+   * Then the elements that contain an even number of the vector must be ordered descending in the first positions of the vector and the odd elements of the vector must be ordered ascending in the last positions of the vector
+   * @return {type}      array and array after sort
    */
   specialArraySort(size) {
     let arr = []
@@ -475,9 +482,9 @@ const algorithms = {
 
   /**
    * isPalindrome - description
-   *
-   * @param  {type} phrase description
-   * @return {type}        description
+   * sentences that are read the same from right to left as usual
+   * @param  {string} phrase the phrase to evaluate
+   * @return {boolean}       If the phrase is equal
    */
   isPalindrome(phrase) {
     let p = phrase.normalize('NFD').replace(/[\u0300-\u036f/,/./ /\?/\¿/\!/\¡]/g,'')
@@ -494,9 +501,16 @@ const algorithms = {
 
   /**
    * beamResistance - description
-   *
-   * @param  {type} beam description
-   * @return {type}      description
+   * A horizontal beam (built from left to right) suspended in the air requires a base to connect it to ground;
+   * there are three types of bases with different resistances:%, &, #.
+   * The rest of the beam is built in two pieces: stringers (=) and connections (*);
+   * the stringers can be connected with other stringers or with a connection.
+   * Connections can only be connected with stringers, no two or more connections are loosely connected.
+   * The bases have the following resistances:% resists 10 units of weight, & resists 30 units of weight, # resists 90 units of weight.
+   * The following formula is used to calculate the weight of the rest of the beam: each new spar sequence, the first spar weighs one unit weight, the second spar 2 units, and so on until the end of the continuous spar sequence.
+   * Each connection weighs twice as much as its previous stringer sequence. Each new stringer sequence is calculated similarly starting at one.
+   * @param  {string} beam string with the construction the beam
+   * @return {object}      if have a error and reason
    */
   beamResistance(beam) {
     let base = {'%':10, '&':30, '#':90}
@@ -527,9 +541,15 @@ const algorithms = {
 
   /**
    * madisonBridge - description
-   *
-   * @param  {type} bridge description
-   * @return {type}        description
+   * (*) Base of the bridges; (=) Bridge platform; (+) Bridge reinforcement
+   * Bridges must comply with the following simple rules:
+   * • The bases (*) can only be at the ends of the bridges.
+   * • Every two platforms requires a reinforcement next to them.
+   * • Three platforms in a row are allowed only in the center of the bridge.
+   * • The bridges must be symmetrical (equal the left part to the right part).
+   * • If 2 or more reinforcements are allowed in a row
+   * @param  {string} bridge string of bridge
+   * @return {object}        if bridge have a error and reason
    */
   madisonBridge(bridge) {
     if(bridge.charAt(0)==='*' && bridge.charAt(bridge.length-1)==='*'){
@@ -557,9 +577,10 @@ const algorithms = {
 
   /**
    * operationMatrix - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * Construct a program that creates a square matrix of order N.
+   * The matrix must be filled with the following formula Cell [i] [j] = (i + 1) - j
+   * @param  {number} n size of matrix
+   * @return {object}   array, sum, number max, and number min
    */
   operationMatrix(n) {
     let matrix = []
@@ -582,9 +603,10 @@ const algorithms = {
 
   /**
    * lowerTriangular - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * The matrix must be filled with the following formula Cell [i] [j] = i + j.
+   * Get the lower triangular matrix
+   * @param  {number} n matrix size
+   * @return {object}   Matrix original, and lower triangular matrix
    */
   lowerTriangular(n) {
     let matrix = []
@@ -607,9 +629,9 @@ const algorithms = {
 
   /**
    * rhombus - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * The rhombus with strings (#)
+   * @param  {number} n size rhomb
+   * @return {string}   rhomb finished
    */
   rhombus(n) {
     let draw = {space:'&nbsp;', numeral:'#', break:'<br>'}
@@ -642,11 +664,14 @@ const algorithms = {
 
   /**
    * matrixMultiplication - description
-   *
-   * @param  {type} m description
-   * @param  {type} n description
-   * @param  {type} p description
-   * @return {type}   description
+   * Amxn X Bnxp = Cmxp
+   * The elements of matrix A fill it with the following formula: A [i] [j] = (i + 1) * j,
+   * The elements of matrix B fill it with the following formula: B [i] [j] = (j + 1) * i.
+   * Then show the matrix resulting from the multiplication of A x B
+   * @param  {number} m size
+   * @param  {number} n size
+   * @param  {number} p size
+   * @return {object}   array A, array B, array C
    */
   matrixMultiplication(m, n, p) {
     let A = []
@@ -682,9 +707,9 @@ const algorithms = {
 
   /**
    * hourglass - description
-   *
-   * @param  {type} n description
-   * @return {type}   description
+   * print the hourglas of matrix
+   * @param  {number} n size odd
+   * @return {object}   matrix and hourglas matrix
    */
   hourglass(n) {
     if (n%2 !== 0){
@@ -717,10 +742,10 @@ const algorithms = {
 
   /**
    * factorDecomposition - description
-   *
-   * @param  {type} number description
-   * @param  {type} a = [] description
-   * @return {type}        description
+   * decomposes a number, shows the numbers of the decomposition
+   * @param  {number} number number to decomposes
+   * @param  {array} a = [] description
+   * @return {string}        string with the answer
    */
   factorDecomposition(number, a = []) {
     if (number === 1) {
