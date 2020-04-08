@@ -1,5 +1,7 @@
 let playField = document.getElementById('play');
 let puzzleField = document.getElementById('puzzle');
+let timeDiv = document.getElementById('time')
+let moveDiv = document.getElementById('move')
 let imageFile;
 let imgSlice = [];
 let cardsDisplayed = [];
@@ -20,7 +22,6 @@ function movePiece(e) {
     }
     let moveTo = puzzle.move(i,j)
     if (moveTo.enabled) {
-      let moveDiv = document.getElementById('move')
       let divMoved = cardsDisplayed[i][j].firstChild
       let divEmpty = cardsDisplayed[moveTo.i][moveTo.j].firstChild
       cardsDisplayed[i][j].firstChild.remove()
@@ -106,6 +107,7 @@ const puzzleDisplay = () => {
       imgSliceDiv = document.createElement('div')
       imgSliceDiv.className = 'img-box'
       imgSliceDiv.onclick = movePiece
+      console.log(puzzle.inGame, xpuzzle, ypuzzle)
       let indicator = puzzle.inGame[xpuzzle][ypuzzle++]
       console.log(indicator)
       imgSliceDiv.id = indicator
@@ -122,31 +124,36 @@ const puzzleDisplay = () => {
   });
 }
 
-const generateCutImages = (imgFile) => {
+
+function loadImage(imgFile) {
+  return new Promise((resolve, reject)=>{
+    const img = new Image()
+    img.onload = () => {resolve(img)}
+    img.onerror = () => {reject(new Error(`Error con la carga de la imagen ${img.src}`))}
+    img.src = URL.createObjectURL(imageFile)
+  });
+}
+
+const generateCutImages = (img) => {
   let chunks = []
   let canvas;
   let ctx;
-  let img = new Image()
-  img.src = URL.createObjectURL(imageFile)
-  img.onload = () => {
-    let slice = {
-      xi : img.width/puzzle.sizePuzzle,
-      yi : img.height/puzzle.sizePuzzle
+  let slice = {
+    xi : img.width/puzzle.sizePuzzle,
+    yi : img.height/puzzle.sizePuzzle
+  }
+  for (var i = 0; i < puzzle.sizePuzzle; i++) {
+    for (var j = 0; j < puzzle.sizePuzzle; j++) {
+      canvas = document.createElement('canvas')
+      canvas.width = slice.xi
+      canvas.height = slice.yi
+      ctx = canvas.getContext('2d');
+      ctx.drawImage(img, j*slice.xi, i*slice.yi, slice.xi, slice.yi, 0, 0, canvas.width, canvas.height)
+      chunks.push(canvas)
     }
-    for (var i = 0; i < puzzle.sizePuzzle; i++) {
-      for (var j = 0; j < puzzle.sizePuzzle; j++) {
-        canvas = document.createElement('canvas')
-        canvas.width = slice.xi
-        canvas.height = slice.yi
-        ctx = canvas.getContext('2d');
-        ctx.drawImage(img, j*slice.xi, i*slice.yi, slice.xi, slice.yi, 0, 0, canvas.width, canvas.height)
-        chunks.push(canvas)
-        console.log(chunks)
-      }
-    }
-    puzzleDisplay()
   }
   chunks.pop()
+  console.log(chunks)
   return chunks;
 }
 
@@ -157,12 +164,23 @@ function startGame(e) {
   if (imageFile && puzzle.sizePuzzle) {
     playField.hidden = true;
     puzzleField.hidden = false;
-    imgSlice = generateCutImages(imageFile)
-    puzzle.startTime((time)=>{
-      let timeField = document.getElementById('time')
-      timeField.innerText = `Time : ${time} s`
-    },start)
-    start = true;
+    imgLoaded = loadImage();
+    alert('cargando imagen')
+    imgLoaded.then(img => {
+      imgSlice = generateCutImages(img);
+      puzzleDisplay();
+      puzzle.startTime((time)=>{
+        timeDiv.innerText = `Time : ${time} s`
+      },start)
+      start = true;
+    }).catch(err => {
+      swal({
+        title : err,
+        icon : "warning",
+        button : "Close",
+        timer : 3000
+      })
+    })
   } else {
     swal({
       title : "No ha subido ninguna imagen",
@@ -171,6 +189,16 @@ function startGame(e) {
       timer : 3000
     })
   }
+}
+
+function gameAgain(){
+  puzzle.restart()
+  start = false
+  playField.hidden = false
+  puzzleField.hidden = true
+  cardsDisplayed = []
+  timeDiv.innerText = `Time : ${puzzle.time} s`
+  moveDiv.innerText = `# moves : ${puzzle.movements}`
 }
 
 window.onload = () => {
