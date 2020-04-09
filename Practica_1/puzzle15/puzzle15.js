@@ -7,6 +7,17 @@ let imgSlice = [];
 let cardsDisplayed = [];
 let start = false;
 
+function preloaderImg() {
+  let preImg = document.createElement('div');
+  preImg.className = 'preloader';
+  let preText = document.createElement('p');
+  preText.innerText = 'Loading image';
+  let container = document.createElement('div');
+  container.className = 'preloads'
+  container.appendChild(preImg);
+  container.appendChild(preText);
+  return container;
+}
 
 function movePiece(e) {
   if(e.target.localName !== 'div'){
@@ -159,15 +170,18 @@ const generateCutImages = (img) => {
 
 function startGame(e) {
   uploadField = document.getElementsByClassName('upload')[0]
+  gameField = document.getElementById('game')
   setMatrix(uploadField.children[0])
   uploadImage(uploadField.children[1])
   if (imageFile && puzzle.sizePuzzle) {
     playField.hidden = true;
-    puzzleField.hidden = false;
     imgLoaded = loadImage();
-    alert('cargando imagen')
+    preImg = preloaderImg();
+    gameField.appendChild(preImg)
     imgLoaded.then(img => {
       imgSlice = generateCutImages(img);
+      preImg.remove();
+      puzzleField.hidden = false;
       puzzleDisplay();
       puzzle.startTime((time)=>{
         timeDiv.innerText = `Time : ${time} s`
