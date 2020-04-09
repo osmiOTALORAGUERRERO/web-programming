@@ -40,7 +40,7 @@ const puzzle = {
   },
   set inGame(size){
     console.log(this._inGame, this.seed)
-    let reorder = Math.floor(Math.random() * (Math.pow(size,3)- 0)) + 0
+    let reorder = Math.floor(Math.random() * (Math.pow(size,size)- 0)) + 0
     let availableMovements = {left:size-1, right:0, up:size-1, down:0}
     let index = {i:size-1, j:size-1}
     for (var x = 0; x < reorder; x++) {
