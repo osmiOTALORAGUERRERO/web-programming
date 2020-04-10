@@ -18,18 +18,90 @@ body {
 
 .game {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-top: 2.5%;
-  margin-bottom: 5%;
-  margin-left: 40%;
-  margin-right: 40%
+  margin-bottom: 2.5%;
 }
-.game img {
+
+.play img {
   width: 100px;
 }
 
+.single5 {
+     height: 50px;
+     width: 50px;
+     background-color: pink;
+     -webkit-animation: single5 5s infinite linear;
+     animation: single5 5s infinite linear;
+  }
+
+@-webkit-keyframes single5 {
+   0% {
+      -webkit-transform: perspective(180px) rotateX(0deg) rotateY(0deg);
+      background-color: #F4D03F;
+   }
+   25% {
+      -webkit-transform: perspective(180px) rotateX(-180.1deg) rotateY(0deg);
+      background-color: #52B3D9;
+   }
+   50% {
+      -webkit-transform: perspective(180px) rotateX(-180deg) rotateY(179.9deg);
+      background-color: #EC644B;
+   }
+   75% {
+      -webkit-transform: perspective(180px) rotateX(-360deg) rotateY(179.9deg);
+      background-color: #68C3A3;
+   }
+   100% {
+      -webkit-transform: perspective(180px) rotateX(-360deg) rotateY(360deg);
+      background-color: #F4D03F;
+   }
+}
+
+@keyframes single5 {
+   0% {
+      transform: perspective(180px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(180px) rotateX(0deg) rotateY(0deg);
+      background-color: #F4D03F;
+   }
+   25% {
+      transform: perspective(180px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(180px) rotateX(-180.1deg) rotateY(0deg);
+      background-color: #52B3D9;
+   }
+   50% {
+      transform: perspective(180px) rotateX(-180deg) rotateY(179.9deg);
+      -webkit-transform: perspective(180px) rotateX(-180deg) rotateY(179.9deg);
+      background-color: #EC644B;
+   }
+   75% {
+      transform: perspective(180px) rotateX(-180deg) rotateY(179.9deg);
+      -webkit-transform: perspective(180px) rotateX(-360deg) rotateY(179.9deg);
+      background-color: #68C3A3;
+   }
+   100% {
+      transform: perspective(180px) rotateX(0deg) rotateY(360deg);
+      -webkit-transform: perspective(180px) rotateX(-360deg) rotateY(360deg);
+      background-color: #F4D03F;
+   }
+}
+
+#thumbnailImage{
+  align-self: stretch;
+  flex: 1 1 1;
+  width: 10%;
+  margin-left: 5%;
+  border-radius: 5px;
+}
+
+#thumbnailImage img{
+  width: 100%;
+  border-radius: inherit;
+}
+
 .puzzle {
+  flex: 1 1 1;
   display: table;
 }
 
@@ -49,24 +121,6 @@ body {
   border-radius: 10px;
 }
 
-.preloader {
-  width: 70px;
-  height: 70px;
-  border: 10px solid #eee;
-  border-top: 10px solid #666;
-  border-radius: 50%;
-  animation-name: girar;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-@keyframes girar {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 canvas {
   width: 100%;

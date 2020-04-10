@@ -1,3 +1,4 @@
+let gameField = document.getElementById('game')
 let playField = document.getElementById('play');
 let puzzleField = document.getElementById('puzzle');
 let timeDiv = document.getElementById('time')
@@ -9,7 +10,7 @@ let start = false;
 
 function preloaderImg() {
   let preImg = document.createElement('div');
-  preImg.className = 'preloader';
+  preImg.className = 'single5';
   let preText = document.createElement('p');
   preText.innerText = 'Loading image';
   let container = document.createElement('div');
@@ -168,9 +169,18 @@ const generateCutImages = (img) => {
   return chunks;
 }
 
+function thumbnailImage(imgSrc){
+  let container = document.createElement('div')
+  container.id = 'thumbnailImage'
+  miniature = document.createElement('img')
+  miniature.src = imgSrc
+  miniature.alt = "Thumbnail Image"
+  container.appendChild(miniature)
+  gameField.appendChild(container)
+}
+
 function startGame(e) {
-  uploadField = document.getElementsByClassName('upload')[0]
-  gameField = document.getElementById('game')
+  let uploadField = document.getElementsByClassName('upload')[0]
   setMatrix(uploadField.children[0])
   uploadImage(uploadField.children[1])
   if (imageFile && puzzle.sizePuzzle) {
@@ -183,6 +193,7 @@ function startGame(e) {
       preImg.remove();
       puzzleField.hidden = false;
       puzzleDisplay();
+      thumbnailImage(img.src)
       puzzle.startTime((time)=>{
         timeDiv.innerText = `Time : ${time} s`
       },start)
@@ -207,6 +218,8 @@ function startGame(e) {
 
 function gameAgain(){
   puzzle.restart()
+  let miniature = document.getElementById('thumbnailImage')
+  if (miniature) { miniature.remove() }
   start = false
   playField.hidden = false
   puzzleField.hidden = true
