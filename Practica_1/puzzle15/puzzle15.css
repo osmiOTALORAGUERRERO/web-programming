@@ -1,20 +1,43 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@600;700&family=Chewy&family=Fredoka+One&display=swap');
 
 body {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Baloo Paaji 2', cursive;
   text-align: center;
-  background-image: url("img/background.jpg");
+  background-image: url("img/cake-3107967_1280.png");
   background-repeat: repeat;
   background-size: cover;
   font-size: 18pt;
+  font-weight: lighter;
 }
 
 .title {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 2.5em;
-  font-weight: bold;
+  font-family: 'Chewy', cursive;
+  font-size: 40pt;
+  letter-spacing: 5pt;
+  font-weight: normal;
+  margin-bottom: 1%;
+  text-shadow: 2px 2px 10px rgb(0, 255, 255);
 }
 
+.time {
+  display: inline;
+  padding-right: 1%;
+  padding-left: 1%;
+  border-radius: 5em 30em 5em 30em;
+  background-color: rgb(39, 55, 70, 0.5);
+}
+
+.move {
+  display: inline;
+  padding-right: 1%;
+  padding-left: 1%;
+  border-radius: 5em 30em 5em 30em;
+  background-color: rgb(39, 55, 70, 0.5);
+}
+
+.footer {
+    font-family: 'Fredoka One', cursive;
+}
 
 .game {
   display: flex;
@@ -24,17 +47,33 @@ body {
   margin-bottom: 2.5%;
 }
 
+
+.play:hover{
+  cursor: pointer;
+}
+
 .play img {
   width: 100px;
 }
 
+.preloads{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.preloads:hover {
+  cursor: progress;
+}
+
 .single5 {
-     height: 50px;
-     width: 50px;
-     background-color: pink;
-     -webkit-animation: single5 5s infinite linear;
-     animation: single5 5s infinite linear;
-  }
+  align-self: center;
+  height: 50px;
+  width: 50px;
+  background-color: pink;
+  -webkit-animation: single5 5s infinite linear;
+  animation: single5 5s infinite linear;
+}
 
 @-webkit-keyframes single5 {
    0% {
@@ -103,6 +142,7 @@ body {
 .puzzle {
   flex: 1 1 1;
   display: table;
+  padding: 0.5em;
 }
 
 .row-box {
@@ -118,24 +158,15 @@ body {
   width: 100px;
   height: 100px;
   border: 2px solid;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
+div[id='-1']{
+  background-color: rgb(224, 224, 224, 0.5);
+}
 
 canvas {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-}
-
-button {
-
-}
-
-input[type ="file"] {
-
-}
-
-select {
-
+  border-radius: 4px;
 }
