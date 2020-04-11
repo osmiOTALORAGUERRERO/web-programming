@@ -181,8 +181,8 @@ function thumbnailImage(imgSrc){
 
 function startGame(e) {
   let uploadField = document.getElementsByClassName('upload')[0]
-  setMatrix(uploadField.children[0])
-  uploadImage(uploadField.children[1])
+  setMatrix(uploadField.querySelector('select'))
+  uploadImage(uploadField.querySelector('input[type=file]'))
   if (imageFile && puzzle.sizePuzzle) {
     playField.hidden = true;
     imgLoaded = loadImage();
@@ -226,10 +226,6 @@ function gameAgain(){
   cardsDisplayed = []
   timeDiv.innerText = `Time : ${puzzle.time} s`
   moveDiv.innerText = `# moves : ${puzzle.movements}`
-}
-
-window.onload = () => {
-  puzzleField.hidden = true;
 }
 
 playField.addEventListener('click', startGame, false);

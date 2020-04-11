@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Puzzle 15</title>
+    <link rel="stylesheet" href="https://unpkg.com/picnic@6.5.2/picnic.min.css">
     <link rel="stylesheet" href="puzzle15.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   </head>
   <body>
     <div class="app">
@@ -20,13 +22,19 @@
             # moves : 0
           </div>
         </div>
-        <div class="upload">
-          <select class="dimensions" name="">
-            <option value="1" selected>3X3</option>
-            <option value="2">4X4</option>
-            <option value="3">5X5</option>
-          </select>
-          <input type="file" name="imgPuzzle" accept="image/jpeg, image/png">
+        <div class="upload flex four center">
+          <div class="tooltip-left" data-tooltip="choose size" style="width: 15%">
+            <select class="dimensions">
+              <option value="1" selected>3X3</option>
+              <option value="2">4X4</option>
+              <option value="3">5X5</option>
+            </select>
+          </div>
+          <div class="tooltip-right" data-tooltip="Drop image or click me" style="width: 20%;">
+            <label class="dropimage miniprofile">
+              <input type="file" name="imgPuzzle" title="Drop image or click me" accept="image/jpeg, image/png">
+            </label>
+          </div>
         </div>
       </div>
       <div id="game" class="game">
@@ -46,5 +54,20 @@
     </div>
     <script src="puzzleLogic.js" charset="utf-8"></script>
     <script src="puzzle15.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      window.onload = () => {
+        puzzleField.hidden = true;
+        // Dropimage handler
+      [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
+        img.onchange = function(e){
+          var inputfile = this, reader = new FileReader();
+          reader.onloadend = function(){
+            inputfile.style['background-image'] = 'url('+reader.result+')';
+            }
+          reader.readAsDataURL(e.target.files[0]);
+          }
+        });
+      }
+    </script>
   </body>
 </html>

@@ -35,6 +35,18 @@ body {
   background-color: rgb(39, 55, 70, 0.5);
 }
 
+.upload {
+  margin-top: 1%;
+}
+
+.miniprofile {
+  border-radius: 50%;    /* Make it a circle */
+  margin: 0 auto;        /* Center horizontally */
+  width: inherit;            /* 60% width */
+  padding-bottom: 20%;   /* 60% height */
+}
+
+
 .footer {
     font-family: 'Fredoka One', cursive;
 }
