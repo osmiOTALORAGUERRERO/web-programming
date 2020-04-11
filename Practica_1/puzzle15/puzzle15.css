@@ -4,8 +4,8 @@ body {
   font-family: 'Baloo Paaji 2', cursive;
   text-align: center;
   background-image: url("img/cake-3107967_1280.png");
-  background-repeat: repeat;
   background-size: cover;
+  background-repeat: repeat;
   font-size: 18pt;
   font-weight: lighter;
 }
@@ -43,7 +43,7 @@ body {
   border-radius: 50%;    /* Make it a circle */
   margin: 0 auto;        /* Center horizontally */
   width: inherit;            /* 60% width */
-  padding-bottom: 20%;   /* 60% height */
+  padding-bottom: 55px;   /* 60% height */
 }
 
 
@@ -163,7 +163,7 @@ body {
 
 .col-box {
   display: table-cell;
-  padding: 1px;
+  padding: 0.5px;
 }
 
 .img-box {

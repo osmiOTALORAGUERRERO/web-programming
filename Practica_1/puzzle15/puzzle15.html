@@ -58,13 +58,14 @@
       window.onload = () => {
         puzzleField.hidden = true;
         // Dropimage handler
-      [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
-        img.onchange = function(e){
-          var inputfile = this, reader = new FileReader();
-          reader.onloadend = function(){
-            inputfile.style['background-image'] = 'url('+reader.result+')';
+        [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
+          img.onchange = function(e){
+            var inputfile = this, reader = new FileReader();
+            reader.onloadend = function(){
+              inputfile.style['background-image'] = 'url('+reader.result+')';
             }
-          reader.readAsDataURL(e.target.files[0]);
+            e.target.title = e.target.files[0].name
+            reader.readAsDataURL(e.target.files[0]);
           }
         });
       }
