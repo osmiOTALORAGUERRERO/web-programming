@@ -1,3 +1,6 @@
+/**
+ * This module is the puzzle logic
+ */
 const puzzle = {
   _seed: [],
   _inGame: [],
@@ -6,18 +9,48 @@ const puzzle = {
   _movements: 0,
   _time: 0,
   _intervalTime:null,
+
+  /**
+   * get time - getter time
+   *
+   * @return {number}  time spent solving the puzzle
+   */
   get time(){
     return this._time;
   },
+
+  /**
+   * get movements - getter movements
+   *
+   * @return {number}  number of moves solving the puzzle
+   */
   get movements(){
     return this._movements;
   },
+
+  /**
+   * set sizePuzzle - setter sizePuzzle
+   *
+   * @param  {number} size size of the puzzle
+   */
   set sizePuzzle(size) {
     this._sizePuzzle = size;
   },
+
+  /**
+   * get sizePuzzle - getter sizePuzzle
+   *
+   * @return {number}  value of sizePuzzle
+   */
   get sizePuzzle() {
     return this._sizePuzzle;
   },
+
+  /**
+   * set seed - setter seed, generate a puzzle with a size
+   *
+   * @param  {number} size size of puzzle
+   */
   set seed(size) {
     this._seed = []
     this._count = 0
@@ -35,9 +68,21 @@ const puzzle = {
       this._inGame.push(row2)
     }
   },
+
+  /**
+   * get seed - getter seed
+   *
+   * @return {object[number[]]}  matrix size * size with puzzle solved
+   */
   get seed(){
     return this._seed;
   },
+
+  /**
+   * set inGame - setter inGame
+   *
+   * @param  {number} size size Puzzle
+   */
   set inGame(size){
     console.log(this._inGame, this.seed)
     let reorder = Math.floor(Math.random() * (Math.pow(size,size)- 0)) + 0
@@ -93,9 +138,22 @@ const puzzle = {
       }
     }
   },
+
+  /**
+   * get inGame - getter inGame
+   *
+   * @return {object[number[]]}  Matrix with disassembled puzzle for the game
+   */
   get inGame(){
     return this._inGame;
   },
+
+  /**
+   * startTime - start the elapsed time counter solving the puzzle
+   *
+   * @callback callback
+   * @param  {boolean} start    if start play or not
+   */
   startTime(callback, start){
     if (!start) {
       this._intervalTime = setInterval(()=>{
@@ -104,6 +162,14 @@ const puzzle = {
       },1000)
     }
   },
+
+  /**
+   * move - move the nearby tile of the puzzle to the hole puzzle
+   *
+   * @param  {number} i position i to move
+   * @param  {number} j position j to move
+   * @return {object}   description of the movement
+   */
   move(i,j) {
     let moveTo = { enabled:false, 'i':null, 'j':null, }
     if (i===0) {
@@ -233,6 +299,12 @@ const puzzle = {
     }
     return moveTo;
   },
+
+  /**
+   * won - check if the inGame is equal to seed
+   *
+   * @return {boolean}  true if won else false
+   */
   won(){
     inGameStr = this.inGame.toString()
     seedStr = this.seed.toString()
@@ -243,6 +315,11 @@ const puzzle = {
     }
     return false
   },
+
+  /**
+   * restart - restart of all parameters object puzzle
+   *
+   */
   restart(){
     this._seed = []
     this._inGame = []
