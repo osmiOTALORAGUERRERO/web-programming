@@ -60,8 +60,8 @@ function movePiece(e) {
         });
       });
       saveNewResult({
-          time:puzzle.time,
-          movements:puzzle.movements,
+          time:`${puzzle.time} s`,
+          movements: puzzle.movements,
           difficulty:`${puzzle.sizePuzzle}x${puzzle.sizePuzzle}`
         })
       swal({

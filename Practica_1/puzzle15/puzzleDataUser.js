@@ -6,7 +6,7 @@ function saveNewResult(data) {
     let scores = JSON.parse(localStorage.getItem('scores'))
     data['# attempt'] = scores.length + 1
     let today = new Date()
-    data.date = `${today.getDay()}/${today.getMonth()}/${today.getFullYear()}`
+    data.date = `${today.getDay()}/${today.getMonth()}/${today.getFullYear()}  ${today.getHours()}:${today.getMinutes()}`
     scores.push(data)
     localStorage.setItem('scores', JSON.stringify(scores))
     updateDataTable()
