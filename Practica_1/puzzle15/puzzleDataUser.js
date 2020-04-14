@@ -1,5 +1,10 @@
 const table = displayData()
 
+table.on('draw', ()=>{
+  var rows = table.rows().count();
+  table.button(1).enable(rows > 0)
+})
+
 function saveNewResult(data) {
   if (data && typeof data === 'object') {
     console.log(data)
@@ -65,12 +70,17 @@ function displayData() {
       },
       {
         text: 'clean',
-        action: () => {
+        action: ( e, dt, node, config ) => {
           localStorage.setItem('scores','[]')
           updateDataTable()
         }
       }
-    ]
+    ],
+    initComplete: (settings, json) => {
+      let api = new $.fn.dataTable.Api( settings );
+      let rows = api.rows().count() ;
+      api.button(1).enable(rows > 0)
+    }
   })
   return table
 }
