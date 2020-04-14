@@ -59,6 +59,11 @@ function movePiece(e) {
           item.firstChild.onclick = null
         });
       });
+      saveNewResult({
+          time:puzzle.time,
+          movements:puzzle.movements,
+          difficulty:`${puzzle.sizePuzzle}x${puzzle.sizePuzzle}`
+        })
       swal({
         title: "Congratulations!",
         text: "You are won",

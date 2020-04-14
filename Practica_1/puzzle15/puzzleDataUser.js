@@ -62,6 +62,13 @@ function displayData() {
               var rows = dt.rows( { selected: true } ).data().toArray();
               deleteResult(rows)
           }
+      },
+      {
+        text: 'clean',
+        action: () => {
+          localStorage.setItem('scores','[]')
+          updateDataTable()
+        }
       }
     ]
   })
