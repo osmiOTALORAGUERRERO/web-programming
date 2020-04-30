@@ -247,3 +247,7 @@ The Fetch API provides an interface for fetching resources (including across the
 
 # Example
 [Example functions](../examples/AJAXExm.html)
+
+***
+
+[Index](../index.md)

@@ -51,3 +51,7 @@ jQuery is a fast, small, and feature-rich JavaScript library. It makes things li
 
 # Example
 [Example functions](../examples/jQueryExm.html)
+
+***
+
+[Index](../index.md)

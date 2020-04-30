@@ -94,3 +94,7 @@ myFunc();
 
 # Example
 [Example functions](../examples/functions.js)
+
+***
+
+[Index](../index.md)

@@ -162,3 +162,7 @@ function myFunc(myObj) {
 # Examples
 [Example json](../examples/Example.json)
 Take from https://www.coinapi.io/
+
+***
+
+[Index](../index.md)
