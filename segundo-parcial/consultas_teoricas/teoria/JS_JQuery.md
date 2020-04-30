@@ -54,4 +54,4 @@ jQuery is a fast, small, and feature-rich JavaScript library. It makes things li
 
 ***
 
-[Index](../index.md)
+[Index](../README.md)

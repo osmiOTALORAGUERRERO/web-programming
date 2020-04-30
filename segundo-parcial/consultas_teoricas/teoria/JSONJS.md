@@ -165,4 +165,4 @@ Take from https://www.coinapi.io/
 
 ***
 
-[Index](../index.md)
+[Index](../README.md)

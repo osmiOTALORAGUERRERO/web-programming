@@ -97,4 +97,4 @@ myFunc();
 
 ***
 
-[Index](../index.md)
+[Index](../README.md)
