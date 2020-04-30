@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Esto es jQuery</h1>
+    <script type="text/javascript">
+      let tester = $('h1').css({color:"red"})
+      $('body').append(tester.clone().css({color:'blue'}))
+      $('body').append(`<div> <h3>html</h3> <p id=html>${tester.html()}</p>`)
+    </script>
+  </body>
+</html>

@@ -85,3 +85,12 @@ function makeFunc() {
 var myFunc = makeFunc();
 myFunc();
 ```
+
+# References
+
+* [Codecademy](https://www.codecademy.com/learn/introduction-to-javascript)
+* [MDN Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [w3schools](https://www.w3schools.com/js/)
+
+# Example
+[Example functions](../examples/functions.js)
