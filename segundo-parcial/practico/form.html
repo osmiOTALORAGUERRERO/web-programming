@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Form</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script
+        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/vfs_fonts.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class= "container">
+            <h1 class="row justify-content-md-center"><b>Personal information</b></h1>
+        </div>
+        <div class= "container mb-4">
+            <h3><b>Personal information</b></h3>
+            <form class="bg-light text-dark needs-validation">
+                <div class="form-group text-center">
+                  <img src="---"alt="photo-profile" id="previewPhoto" class="rounded-circle w-25">
+                </div>
+                <div class="form-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="profilePhoto" required>
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                      <label for="name">Name</label>
+                      <input type="text" name="name" id="name" class="form-control text-uppercase" placeholder="Your name" aria-describedby="helpId" required>
+                    </div>
+                    <div class="form-group col">
+                      <label for="surname">Surname</label>
+                      <input type="text" name="surname" id="surname" class="form-control text-uppercase" placeholder="Your surname" aria-describedby="helpId" required>
+                    </div>
+                </div>
+                <!-- Personal information -->
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="birthdate">Birthdate</label>
+                      <input type="date" name="birthdate" id="birthdate" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="age">Age</label>
+                      <input type="text" name="age" id="age" value="" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="Gender">Gender</label>
+                      <select class="form-control" id="gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                </div>
+                <!-- Direcciones electronicas -->
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                      <label for="cell-number">Cell number</label>
+                      <input type="tel" name="cell-number" id="cell-number" class="form-control" placeholder="10 digits" required pattern="[0-9]{10}">
+                  </div>
+                  <div class="form-group col-md-8">
+                      <label for="email">Email</label>
+                      <input type="text" class="form-control text-lowercase" name="email" id="email" placeholder="example@domain.com" required>
+
+                  </div>
+                </div>
+                <!-- Residence -->
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="city">city</label>
+                    <select class="form-control" id="city" name="" required>
+                      <option value="Bogota">Bogota</option>
+                      <option value="Medellin">Medellin</option>
+                      <option value="Cali">Cali</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="street">type of street</label>
+                    <select class="form-control" name="street" id="type-street" required>
+                      <option value="Autopista">Autopista</option>
+                      <option value="Avenida">Avenida</option>
+                      <option value="Avenida Calle">Avenida Calle</option>
+                      <option value="Avenida Carrera">Avenida Carrera</option>
+                      <option value="Calle">Calle</option>
+                      <option value="Carrera">Carrera</option>
+                      <option value="Circular">Circular</option>
+                      <option value="Diagonal">Diagonal</option>
+                      <option value="Manzana">Manzana</option>
+                      <option value="Transversal">Transversal</option>
+                      <option value="Via">Via</option>
+                    </select>
+                  </div>
+                  <div class="form-group col">
+                    <label for="main-street">main street</label>
+                    <input type="text" class="form-control" name="main-street" id="main-street" value="" required>
+                  </div>
+                  <div class="form-group col">
+                    <label for="secondary-street">secondary street</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                      </div>
+                      <input type="text" class="form-control" name="secondary-street" id="secondary-street" value="" required>
+                    </div>
+                  </div>
+                  <div class="form-group col">
+                    <label for="end">end</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">-</div>
+                      </div>
+                      <input type="text" class="form-control" id="end-street" name="end" value="" required>
+                    </div>
+                  </div>
+                </div>
+                <!-- Description Personal -->
+                <div class="form-group">
+                  <label for="Personal-perfil">Description</label>
+                  <textarea class="form-control text-lowercase" name="Personal-perfil" id="description" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate PDF</button>
+                <button type="clean" id="reset" class="btn btn-primary">Other</button>
+            </form>
+        </div>
+        <script src="generatePDF.js" charset="utf-8"></script>
+        <script src="formManipulate.js" charset="utf-8"></script>
+        <script type="text/javascript">
+          $(document).ready(() => {
+            let file = $('#profilePhoto')[0].files[0]
+            if (file) {
+              let reader = new FileReader();
+              reader.onload = e => {
+                let result = e.target.result;
+                $('#previewPhoto').attr("src",result);
+              }
+              reader.readAsDataURL(file);
+            }
+          })
+        </script>
+    </body>
+</html>
